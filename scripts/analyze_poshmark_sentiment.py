@@ -97,13 +97,25 @@ def add_sentiment(posts: List[Dict]) -> List[Dict]:
 
 def parse_timestamp(post: Dict) -> Optional[datetime]:
     raw = post.get("timestamp")
-    if not raw:
-        return None
-    cleaned = raw.replace("·", "").replace("  ", " ").strip()
-    try:
-        return datetime.strptime(cleaned, "%b %d, %Y %I:%M %p %Z").replace(tzinfo=timezone.utc)
-    except ValueError:
-        return None
+    if raw:
+        cleaned = raw.replace("·", "").replace("  ", " ").strip()
+        for fmt in ("%b %d, %Y %I:%M %p %Z", "%b %d, %Y %I:%M %p"):
+            try:
+                dt = datetime.strptime(cleaned, fmt)
+                if dt.tzinfo is None:
+                    dt = dt.replace(tzinfo=timezone.utc)
+                return dt.astimezone(timezone.utc)
+            except ValueError:
+                continue
+    retrieved = post.get("retrieved_at")
+    if retrieved:
+        try:
+            if retrieved.endswith("Z"):
+                retrieved = retrieved.replace("Z", "+00:00")
+            return datetime.fromisoformat(retrieved).astimezone(timezone.utc)
+        except ValueError:
+            return None
+    return None
 
 
 def filter_recent(posts: List[Dict], days: int = WINDOW_DAYS) -> List[Dict]:
@@ -122,10 +134,8 @@ def matches_topic(post: Dict) -> bool:
     text = post.get("clean_text", "").lower()
     if not text:
         return False
-    if "consign" not in text:
-        # Mild relevance check to avoid general bag chatter.
-        return False
-    if any(keyword in text for keyword in TOPIC_KEYWORDS):
+    has_keyword = any(keyword in text for keyword in TOPIC_KEYWORDS)
+    if "consign" in text or has_keyword:
         return True
     return False
 
@@ -185,14 +195,7 @@ def format_post(post: Dict) -> str:
     )
 
 
-def build_markdown(reddit_stats: Dict, x_stats: Dict) -> str:
-    def counts_row(label_counts: Counter) -> str:
-        positives = label_counts.get("positive", 0)
-        neutrals = label_counts.get("neutral", 0)
-        negatives = label_counts.get("negative", 0)
-        total = positives + neutrals + negatives
-        return f"{total} | {positives} | {neutrals} | {negatives}"
-
+def build_markdown(reddit_stats: Dict) -> str:
     lines = [
         "# Poshmark Consignment Social Sentiment",
         "",
@@ -203,10 +206,6 @@ def build_markdown(reddit_stats: Dict, x_stats: Dict) -> str:
         f"{reddit_stats['label_counts'].get('positive', 0)} | "
         f"{reddit_stats['label_counts'].get('neutral', 0)} | "
         f"{reddit_stats['label_counts'].get('negative', 0)}",
-        f"X (Nitter) | {x_stats['count']} | {x_stats['avg_sentiment']:+.2f} | "
-        f"{x_stats['label_counts'].get('positive', 0)} | "
-        f"{x_stats['label_counts'].get('neutral', 0)} | "
-        f"{x_stats['label_counts'].get('negative', 0)}",
         "",
         "## Reddit highlights",
     ]
@@ -233,42 +232,23 @@ def build_markdown(reddit_stats: Dict, x_stats: Dict) -> str:
         lines.append(f"Pain-point terms: {keywords}")
 
     lines.append("")
-    lines.append("## X (Twitter) highlights")
-    for post in unique_posts([x_stats["top_positive"], x_stats["top_negative"]]):
-        lines.append(format_post(post))
-    lines.append("")
-    if x_stats["keywords"]:
-        keywords = ", ".join(f"{word} ({count})" for word, count in x_stats["keywords"])
-        lines.append(f"Top recurring terms: {keywords}")
-    if x_stats["negative_keywords"]:
-        keywords = ", ".join(f"{word} ({count})" for word, count in x_stats["negative_keywords"])
-        lines.append(f"Pain-point terms: {keywords}")
-
-    lines.append("")
     lines.append("## Methodology & caveats")
-    lines.append("- Reddit snippets sourced from Brave Search infoboxes due to direct API restrictions; total 5 posts.")
-    lines.append("- X posts scraped through Nitter (21 posts) and analyzed via VADER; basic keyword filtering only.")
-    lines.append(f"- Limited to posts from the past {WINDOW_DAYS} days that mention consignors sending bags to partners.")
-    lines.append("- Reddit entries without timestamps were excluded from the 60-day slice.")
+    lines.append("- Reddit snippets sourced from Brave Search infoboxes due to direct API restrictions.")
+    lines.append(f"- Limited to posts retrieved within the past {WINDOW_DAYS} days that mention consignors sending bags to partners.")
+    lines.append("- Where Reddit timestamps were unavailable, retrieval time (UTC) was used as a proxy.")
     lines.append("- Compound score thresholds: ≥0.05 positive, ≤-0.05 negative.")
     return "\n".join(lines)
 
 
 def main() -> None:
     reddit_raw = add_sentiment(load_json(DATA_DIR / "reddit_posts.json"))
-    x_raw = add_sentiment(load_json(DATA_DIR / "x_posts.json"))
-
     reddit_filtered = filter_topic(filter_recent(reddit_raw))
-    x_filtered = filter_topic(filter_recent(x_raw))
-
     reddit_stats = summarize(reddit_filtered)
-    x_stats = summarize(x_filtered)
     output = {
         "reddit": reddit_stats,
-        "x": x_stats,
     }
     (REPORT_DIR / "poshmark_sentiment.json").write_text(json.dumps(output, indent=2))
-    markdown = build_markdown(reddit_stats, x_stats)
+    markdown = build_markdown(reddit_stats)
     (REPORT_DIR / "poshmark_sentiment.md").write_text(markdown)
     print("Saved:")
     print(" -", REPORT_DIR / "poshmark_sentiment.json")
