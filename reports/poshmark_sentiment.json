@@ -1,98 +1,72 @@
 {
   "reddit": {
-    "count": 5,
-    "avg_sentiment": 0.475,
+    "count": 0,
+    "avg_sentiment": 0.0,
+    "label_counts": {},
+    "top_positive": [],
+    "top_negative": [],
+    "keywords": [],
+    "negative_keywords": []
+  },
+  "x": {
+    "count": 2,
+    "avg_sentiment": 0.126,
     "label_counts": {
-      "positive": 4,
-      "neutral": 1
+      "positive": 1,
+      "negative": 1
     },
     "top_positive": [
       {
-        "query": "poshmark consignment network reddit",
-        "title": "Is anybody using the Consignor feature?",
-        "url": "https://www.reddit.com/r/poshmark/comments/1kxvn0z/is_anybody_using_the_consignor_feature/",
-        "text": "I\u2019m by no means an expert on this program, and it\u2019s not available in my market. I have heard various people, including Manish, describe the Poshmark consignment program and process a few times, and here\u2019s what I understand so far: If you\u2019re interested in participating, whether having someone sell your items for you, or prepping/listing/selling someone else\u2019s items, you sign up for the program and provide your details to Poshmark If you are interested in having someone sell for you, Poshmark sends you a bag, you fill it up with the items you want to have sold, ship it back to Poshmark, and then they ship it to a seller who has agreed to process your items, photograph, and list them in their store/closet. If you\u2019re the seller, you accept the items that Poshmark sends to you, and process the inventory as you normally would. Sellers have discretion over initial pricing, condition description, and final sales price. Once a consignment item has sold, and after taxes and Poshmark fees, the two parties split the balance 50/50. As a longtime seller, this doesn\u2019t personally appeal to me or make reasonable financial sense, especially if I had no control over the type of inventory that I would be agreeing to consign, had to accept inventory sight unseen, was required to clean/repair/rehab items, was unable to refuse/ return selected items, or had to frequently interact or with or \u201cupdate\u201d the person whose items I was consigning through the program. Answer from Strong_Possible_2940 on reddit.com",
-        "clean_text": "I\u2019m by no means an expert on this program, and it\u2019s not available in my market. I have heard various people, including Manish, describe the Poshmark consignment program and process a few times, and here\u2019s what I understand so far: If you\u2019re interested in participating, whether having someone sell your items for you, or prepping/listing/selling someone else\u2019s items, you sign up for the program and provide your details to Poshmark If you are interested in having someone sell for you, Poshmark sends you a bag, you fill it up with the items you want to have sold, ship it back to Poshmark, and then they ship it to a seller who has agreed to process your items, photograph, and list them in their store/closet. If you\u2019re the seller, you accept the items that Poshmark sends to you, and process the inventory as you normally would. Sellers have discretion over initial pricing, condition description, and final sales price. Once a consignment item has sold, and after taxes and Poshmark fees, the two parties split the balance 50/50. As a longtime seller, this doesn\u2019t personally appeal to me or make reasonable financial sense, especially if I had no control over the type of inventory that I would be agreeing to consign, had to accept inventory sight unseen, was required to clean/repair/rehab items, was unable to refuse/ return selected items, or had to frequently interact or with or \u201cupdate\u201d the person whose items I was consigning through the program. Answer from Strong_Possible_2940 on reddit.com",
-        "sentiment": 0.8885,
+        "url": "https://nitter.net/grok/status/1995571518622105847#m",
+        "author": "Grok",
+        "handle": "grok",
+        "date_label": "Dec 1",
+        "timestamp": "Dec 1, 2025 \u00b7 7:11 PM UTC",
+        "replying_to": [
+          "MPhinkerton"
+        ],
+        "text": "$16.08 for those items\u2014solid start! For the bag of leftovers in Maple Shade, try Once Worn Consignment in Cherry Hill (they buy men's apparel like pants/jackets for cash) or Clothes Mentor in Marlton (similar). 2nd Ave Thrift in Pennsauken might too. Online: Poshmark or Facebook Marketplace. Worth a shot? \ud83d\ude0a",
+        "metrics": [
+          1,
+          25
+        ],
+        "clean_text": "$16.08 for those items\u2014solid start! For the bag of leftovers in Maple Shade, try Once Worn Consignment in Cherry Hill (they buy men's apparel like pants/jackets for cash) or Clothes Mentor in Marlton (similar). 2nd Ave Thrift in Pennsauken might too. Online: Poshmark or Facebook Marketplace. Worth a shot? \ud83d\ude0a",
+        "sentiment": 0.8172,
         "sentiment_label": "positive"
       },
       {
-        "query": "poshmark consignment complaints reddit",
-        "title": "Bad experience with consignment?",
-        "url": "https://www.reddit.com/r/poshmark/comments/1l394um/bad_experience_with_consignment/",
-        "text": "What if you had sourced and found bugs in the clothing when you brought home? This can happen anytime you bring used clothes from anywhere. Heck can even happen with new clothes. If you aren\u2019t happy, return and don\u2019t consign anymore. Answer from chenchen_chikis on reddit.com",
-        "clean_text": "What if you had sourced and found bugs in the clothing when you brought home? This can happen anytime you bring used clothes from anywhere. Heck can even happen with new clothes. If you aren\u2019t happy, return and don\u2019t consign anymore. Answer from chenchen_chikis on reddit.com",
-        "sentiment": 0.5719,
-        "sentiment_label": "positive"
+        "url": "https://nitter.net/otoni_cris/status/1984806634720239713#m",
+        "author": "Cris Otoni",
+        "handle": "otoni_cris",
+        "date_label": "Nov 2",
+        "timestamp": "Nov 2, 2025 \u00b7 2:15 AM UTC",
+        "replying_to": [],
+        "text": "I\u2019ve filed formal BBB complaints against both [@Poshmark](https://nitter.net/poshmark \"Portia M-Quarcoo\") and [@Uber](https://nitter.net/Uber \"Uber\") regarding the loss of my consignment bags from July 30 (Police Report 10502). Still no clear answers, so I\u2019ve taken it through official consumer channels. Hoping for transparency. [#ConsumerRights](https://nitter.net/search?q=%23ConsumerRights)[#Accountability](https://nitter.net/search?q=%23Accountability)",
+        "metrics": [
+          2,
+          33
+        ],
+        "clean_text": "I\u2019ve filed formal BBB complaints against both @Poshmark and @Uber regarding the loss of my consignment bags from July 30 (Police Report 10502). Still no clear answers, so I\u2019ve taken it through official consumer channels. Hoping for transparency.",
+        "sentiment": -0.5644,
+        "sentiment_label": "negative"
       }
     ],
     "top_negative": [
       {
-        "query": "closet partner poshmark consignment reddit",
-        "title": "How long did it take for your closet partner to start listing consignment items you sent them?",
-        "url": "https://www.reddit.com/r/poshmark/comments/1l3mbcg/how_long_did_it_take_for_your_closet_partner_to/",
-        "text": "closet partner What is this? Answer from That_Cupcake on reddit.com",
-        "clean_text": "closet partner What is this? Answer from That_Cupcake on reddit.com",
-        "sentiment": 0.0,
-        "sentiment_label": "neutral"
-      },
-      {
-        "query": "poshmark consignment review reddit",
-        "title": "Anyone have a positive experience with Poshmark Consignment?",
-        "url": "https://www.reddit.com/r/poshmark/comments/1loiq6e/anyone_have_a_positive_experience_with_poshmark/",
-        "text": "Interested in learning more about the consignment before trying! Answer from Anon-Connie on reddit.com",
-        "clean_text": "Interested in learning more about the consignment before trying! Answer from Anon-Connie on reddit.com",
-        "sentiment": 0.4574,
-        "sentiment_label": "positive"
-      }
-    ],
-    "keywords": [
-      [
-        "items",
-        8
-      ],
-      [
-        "answer",
-        5
-      ],
-      [
-        "reddit",
-        5
-      ],
-      [
-        "program",
-        4
-      ],
-      [
-        "process",
-        3
-      ]
-    ],
-    "negative_keywords": []
-  },
-  "x": {
-    "count": 21,
-    "avg_sentiment": 0.249,
-    "label_counts": {
-      "positive": 13,
-      "neutral": 4,
-      "negative": 4
-    },
-    "top_positive": [
-      {
-        "url": "https://nitter.net/nikmari3_/status/1990200807980191778#m",
-        "author": "\ud835\udc75\ud835\udc8a\ud835\udc8c\ud835\udc8c\ud835\udc8a\ud83e\udee7\ud83e\uded6",
-        "handle": "nikmari3_",
-        "date_label": "Nov 16",
-        "timestamp": "Nov 16, 2025 \u00b7 11:30 PM UTC",
+        "url": "https://nitter.net/otoni_cris/status/1984806634720239713#m",
+        "author": "Cris Otoni",
+        "handle": "otoni_cris",
+        "date_label": "Nov 2",
+        "timestamp": "Nov 2, 2025 \u00b7 2:15 AM UTC",
         "replying_to": [],
-        "text": "Very grateful I kept my sons\u2019 Poshmark. His consignment store is filled to capacity & isn\u2019t accepting any new inventory until January. I\u2019m gonna start revamping that page this evening. Glad I kept 5\u2728 on that thang\ud83e\udd1e\ud83c\udffd",
+        "text": "I\u2019ve filed formal BBB complaints against both [@Poshmark](https://nitter.net/poshmark \"Portia M-Quarcoo\") and [@Uber](https://nitter.net/Uber \"Uber\") regarding the loss of my consignment bags from July 30 (Police Report 10502). Still no clear answers, so I\u2019ve taken it through official consumer channels. Hoping for transparency. [#ConsumerRights](https://nitter.net/search?q=%23ConsumerRights)[#Accountability](https://nitter.net/search?q=%23Accountability)",
         "metrics": [
-          152
+          2,
+          33
         ],
-        "clean_text": "Very grateful I kept my sons\u2019 Poshmark. His consignment store is filled to capacity & isn\u2019t accepting any new inventory until January. I\u2019m gonna start revamping that page this evening. Glad I kept 5\u2728 on that thang\ud83e\udd1e\ud83c\udffd",
-        "sentiment": 0.8805,
-        "sentiment_label": "positive"
+        "clean_text": "I\u2019ve filed formal BBB complaints against both @Poshmark and @Uber regarding the loss of my consignment bags from July 30 (Police Report 10502). Still no clear answers, so I\u2019ve taken it through official consumer channels. Hoping for transparency.",
+        "sentiment": -0.5644,
+        "sentiment_label": "negative"
       },
       {
         "url": "https://nitter.net/grok/status/1995571518622105847#m",
@@ -113,85 +87,48 @@
         "sentiment_label": "positive"
       }
     ],
-    "top_negative": [
-      {
-        "url": "https://nitter.net/jamesebradford/status/1970351601027293695#m",
-        "author": "James Bradford",
-        "handle": "jamesebradford",
-        "date_label": "Sep 23",
-        "timestamp": "Sep 23, 2025 \u00b7 4:56 AM UTC",
-        "replying_to": [
-          "AniasFinds",
-          "poshmark"
-        ],
-        "text": "Yeah. So am I. They're basically ignoring me. I have no way of knowing if my \"partner\" in consignment is telling the truth, but the bag has been MIA for weeks and [@Poshmarkapp](https://nitter.net/Poshmarkapp \"Poshmark\")[@PoshmarkSupport](https://nitter.net/PoshmarkSupport \"Poshmark Support\") has chosen to ignore my emails on the matter, which is BEYOND comprehension.",
-        "metrics": [
-          2,
-          19
-        ],
-        "clean_text": "Yeah. So am I. They're basically ignoring me. I have no way of knowing if my \"partner\" in consignment is telling the truth, but the bag has been MIA for weeks and @Poshmarkapp@PoshmarkSupport has chosen to ignore my emails on the matter, which is BEYOND comprehension.",
-        "sentiment": -0.802,
-        "sentiment_label": "negative"
-      },
-      {
-        "url": "https://nitter.net/morgandianaj/status/1931164495512248460#m",
-        "author": "Diana Morgan",
-        "handle": "morgandianaj",
-        "date_label": "Jun 7",
-        "timestamp": "Jun 7, 2025 \u00b7 1:41 AM UTC",
-        "replying_to": [],
-        "text": "[@Poshmarkapp](https://nitter.net/Poshmarkapp \"Poshmark\") hey Poshmark, I did one of your new consignment bags and you sent it to the wrong person. I haven\u2019t been able to get an answer from customer service and it\u2019s been two weeks. Not feeling the love what can you do about this?",
-        "metrics": [
-          1,
-          26
-        ],
-        "clean_text": "@Poshmarkapp hey Poshmark, I did one of your new consignment bags and you sent it to the wrong person. I haven\u2019t been able to get an answer from customer service and it\u2019s been two weeks. Not feeling the love what can you do about this?",
-        "sentiment": -0.7807,
-        "sentiment_label": "negative"
-      }
-    ],
     "keywords": [
       [
-        "ebay",
-        6
+        "those",
+        1
       ],
       [
         "items",
-        4
+        1
       ],
       [
-        "clothes",
-        4
+        "solid",
+        1
       ],
       [
-        "like",
-        3
+        "start",
+        1
       ],
       [
-        "closet",
-        3
+        "leftovers",
+        1
       ]
     ],
     "negative_keywords": [
       [
-        "weeks",
-        3
+        "filed",
+        1
       ],
       [
-        "police",
-        2
+        "formal",
+        1
       ],
       [
-        "partner",
-        2
+        "complaints",
+        1
       ],
       [
-        "poshmarkapp",
-        2
+        "against",
+        1
       ],
       [
-        "emails",
-        2
+        "both",
+        1
       ]
     ]
   }

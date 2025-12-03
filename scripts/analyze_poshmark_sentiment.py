@@ -3,13 +3,12 @@
 from __future__ import annotations
 
 import json
-import math
 import re
 from collections import Counter
-from dataclasses import dataclass
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from statistics import mean
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
@@ -50,6 +49,22 @@ STOP_WORDS = {
     "bags",
 }
 
+TOPIC_KEYWORDS = (
+    "consignor",
+    "closet partner",
+    "partner",
+    "consignment bag",
+    "bag",
+    "bags",
+    "sell for",
+    "consignment network",
+    "consignment program",
+    "sent my bag",
+    "received my bag",
+)
+
+WINDOW_DAYS = 60
+
 
 def load_json(path: Path) -> List[Dict]:
     if not path.exists():
@@ -80,6 +95,45 @@ def add_sentiment(posts: List[Dict]) -> List[Dict]:
     return enriched
 
 
+def parse_timestamp(post: Dict) -> Optional[datetime]:
+    raw = post.get("timestamp")
+    if not raw:
+        return None
+    cleaned = raw.replace("·", "").replace("  ", " ").strip()
+    try:
+        return datetime.strptime(cleaned, "%b %d, %Y %I:%M %p %Z").replace(tzinfo=timezone.utc)
+    except ValueError:
+        return None
+
+
+def filter_recent(posts: List[Dict], days: int = WINDOW_DAYS) -> List[Dict]:
+    cutoff = datetime.now(timezone.utc) - timedelta(days=days)
+    filtered = []
+    for post in posts:
+        ts = parse_timestamp(post)
+        if ts is None:
+            continue
+        if ts >= cutoff:
+            filtered.append(post)
+    return filtered
+
+
+def matches_topic(post: Dict) -> bool:
+    text = post.get("clean_text", "").lower()
+    if not text:
+        return False
+    if "consign" not in text:
+        # Mild relevance check to avoid general bag chatter.
+        return False
+    if any(keyword in text for keyword in TOPIC_KEYWORDS):
+        return True
+    return False
+
+
+def filter_topic(posts: List[Dict]) -> List[Dict]:
+    return [post for post in posts if matches_topic(post)]
+
+
 def bucket_keywords(posts: List[Dict], *, limit: int = 5) -> List[tuple[str, int]]:
     counter: Counter[str] = Counter()
     for post in posts:
@@ -105,7 +159,7 @@ def summarize(posts: List[Dict]) -> Dict:
     avg_sent = mean(p["sentiment"] for p in posts)
     label_counts = Counter(p["sentiment_label"] for p in posts)
     sorted_desc = sorted(posts, key=lambda p: p["sentiment"], reverse=True)
-    sorted_asc = list(reversed(sorted_desc))
+    sorted_asc = sorted(posts, key=lambda p: p["sentiment"])
     top_positive = sorted_desc[:2]
     top_negative = sorted_asc[:2]
     keywords = bucket_keywords(posts)
@@ -156,8 +210,20 @@ def build_markdown(reddit_stats: Dict, x_stats: Dict) -> str:
         "",
         "## Reddit highlights",
     ]
-    lines.extend(format_post(p) for p in reddit_stats["top_positive"] if reddit_stats["top_positive"])
-    lines.extend(format_post(p) for p in reddit_stats["top_negative"] if reddit_stats["top_negative"])
+    def unique_posts(groups: List[List[Dict]]) -> List[Dict]:
+        seen = set()
+        ordered: List[Dict] = []
+        for group in groups:
+            for post in group:
+                key = post.get("url") or post.get("title") or post.get("author")
+                if key in seen:
+                    continue
+                seen.add(key)
+                ordered.append(post)
+        return ordered
+
+    for post in unique_posts([reddit_stats["top_positive"], reddit_stats["top_negative"]]):
+        lines.append(format_post(post))
     lines.append("")
     if reddit_stats["keywords"]:
         keywords = ", ".join(f"{word} ({count})" for word, count in reddit_stats["keywords"])
@@ -168,8 +234,8 @@ def build_markdown(reddit_stats: Dict, x_stats: Dict) -> str:
 
     lines.append("")
     lines.append("## X (Twitter) highlights")
-    lines.extend(format_post(p) for p in x_stats["top_positive"] if x_stats["top_positive"])
-    lines.extend(format_post(p) for p in x_stats["top_negative"] if x_stats["top_negative"])
+    for post in unique_posts([x_stats["top_positive"], x_stats["top_negative"]]):
+        lines.append(format_post(post))
     lines.append("")
     if x_stats["keywords"]:
         keywords = ", ".join(f"{word} ({count})" for word, count in x_stats["keywords"])
@@ -182,15 +248,21 @@ def build_markdown(reddit_stats: Dict, x_stats: Dict) -> str:
     lines.append("## Methodology & caveats")
     lines.append("- Reddit snippets sourced from Brave Search infoboxes due to direct API restrictions; total 5 posts.")
     lines.append("- X posts scraped through Nitter (21 posts) and analyzed via VADER; basic keyword filtering only.")
+    lines.append(f"- Limited to posts from the past {WINDOW_DAYS} days that mention consignors sending bags to partners.")
+    lines.append("- Reddit entries without timestamps were excluded from the 60-day slice.")
     lines.append("- Compound score thresholds: ≥0.05 positive, ≤-0.05 negative.")
     return "\n".join(lines)
 
 
 def main() -> None:
-    reddit_data = add_sentiment(load_json(DATA_DIR / "reddit_posts.json"))
-    x_data = add_sentiment(load_json(DATA_DIR / "x_posts.json"))
-    reddit_stats = summarize(reddit_data)
-    x_stats = summarize(x_data)
+    reddit_raw = add_sentiment(load_json(DATA_DIR / "reddit_posts.json"))
+    x_raw = add_sentiment(load_json(DATA_DIR / "x_posts.json"))
+
+    reddit_filtered = filter_topic(filter_recent(reddit_raw))
+    x_filtered = filter_topic(filter_recent(x_raw))
+
+    reddit_stats = summarize(reddit_filtered)
+    x_stats = summarize(x_filtered)
     output = {
         "reddit": reddit_stats,
         "x": x_stats,
