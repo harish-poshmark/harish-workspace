@@ -1,0 +1,77 @@
+{
+  "reddit": {
+    "count": 3,
+    "avg_sentiment": 0.487,
+    "label_counts": {
+      "neutral": 1,
+      "positive": 2
+    },
+    "top_positive": [
+      {
+        "query": "poshmark consignment seller reddit",
+        "title": "Is anybody using the Consignor feature?",
+        "url": "https://www.reddit.com/r/poshmark/comments/1kxvn0z/is_anybody_using_the_consignor_feature/",
+        "text": "I\u2019m by no means an expert on this program, and it\u2019s not available in my market. I have heard various people, including Manish, describe the Poshmark consignment program and process a few times, and here\u2019s what I understand so far: If you\u2019re interested in participating, whether having someone sell your items for you, or prepping/listing/selling someone else\u2019s items, you sign up for the program and provide your details to Poshmark If you are interested in having someone sell for you, Poshmark sends you a bag, you fill it up with the items you want to have sold, ship it back to Poshmark, and then they ship it to a seller who has agreed to process your items, photograph, and list them in their store/closet. If you\u2019re the seller, you accept the items that Poshmark sends to you, and process the inventory as you normally would. Sellers have discretion over initial pricing, condition description, and final sales price. Once a consignment item has sold, and after taxes and Poshmark fees, the two parties split the balance 50/50. As a longtime seller, this doesn\u2019t personally appeal to me or make reasonable financial sense, especially if I had no control over the type of inventory that I would be agreeing to consign, had to accept inventory sight unseen, was required to clean/repair/rehab items, was unable to refuse/ return selected items, or had to frequently interact or with or \u201cupdate\u201d the person whose items I was consigning through the program. Answer from Strong_Possible_2940 on reddit.com",
+        "retrieved_at": "2025-12-03T09:42:40Z",
+        "clean_text": "I\u2019m by no means an expert on this program, and it\u2019s not available in my market. I have heard various people, including Manish, describe the Poshmark consignment program and process a few times, and here\u2019s what I understand so far: If you\u2019re interested in participating, whether having someone sell your items for you, or prepping/listing/selling someone else\u2019s items, you sign up for the program and provide your details to Poshmark If you are interested in having someone sell for you, Poshmark sends you a bag, you fill it up with the items you want to have sold, ship it back to Poshmark, and then they ship it to a seller who has agreed to process your items, photograph, and list them in their store/closet. If you\u2019re the seller, you accept the items that Poshmark sends to you, and process the inventory as you normally would. Sellers have discretion over initial pricing, condition description, and final sales price. Once a consignment item has sold, and after taxes and Poshmark fees, the two parties split the balance 50/50. As a longtime seller, this doesn\u2019t personally appeal to me or make reasonable financial sense, especially if I had no control over the type of inventory that I would be agreeing to consign, had to accept inventory sight unseen, was required to clean/repair/rehab items, was unable to refuse/ return selected items, or had to frequently interact or with or \u201cupdate\u201d the person whose items I was consigning through the program. Answer from Strong_Possible_2940 on reddit.com",
+        "sentiment": 0.8885,
+        "sentiment_label": "positive"
+      },
+      {
+        "query": "poshmark consignment complaints reddit",
+        "title": "Bad experience with consignment?",
+        "url": "https://www.reddit.com/r/poshmark/comments/1l394um/bad_experience_with_consignment/",
+        "text": "What if you had sourced and found bugs in the clothing when you brought home? This can happen anytime you bring used clothes from anywhere. Heck can even happen with new clothes. If you aren\u2019t happy, return and don\u2019t consign anymore. Answer from chenchen_chikis on reddit.com",
+        "retrieved_at": "2025-12-03T09:42:40Z",
+        "clean_text": "What if you had sourced and found bugs in the clothing when you brought home? This can happen anytime you bring used clothes from anywhere. Heck can even happen with new clothes. If you aren\u2019t happy, return and don\u2019t consign anymore. Answer from chenchen_chikis on reddit.com",
+        "sentiment": 0.5719,
+        "sentiment_label": "positive"
+      }
+    ],
+    "top_negative": [
+      {
+        "query": "poshmark closet partner reddit",
+        "title": "How long did it take for your closet partner to start listing consignment items you sent them?",
+        "url": "https://www.reddit.com/r/poshmark/comments/1l3mbcg/how_long_did_it_take_for_your_closet_partner_to/",
+        "text": "closet partner What is this? Answer from That_Cupcake on reddit.com",
+        "retrieved_at": "2025-12-03T09:42:40Z",
+        "clean_text": "closet partner What is this? Answer from That_Cupcake on reddit.com",
+        "sentiment": 0.0,
+        "sentiment_label": "neutral"
+      },
+      {
+        "query": "poshmark consignment complaints reddit",
+        "title": "Bad experience with consignment?",
+        "url": "https://www.reddit.com/r/poshmark/comments/1l394um/bad_experience_with_consignment/",
+        "text": "What if you had sourced and found bugs in the clothing when you brought home? This can happen anytime you bring used clothes from anywhere. Heck can even happen with new clothes. If you aren\u2019t happy, return and don\u2019t consign anymore. Answer from chenchen_chikis on reddit.com",
+        "retrieved_at": "2025-12-03T09:42:40Z",
+        "clean_text": "What if you had sourced and found bugs in the clothing when you brought home? This can happen anytime you bring used clothes from anywhere. Heck can even happen with new clothes. If you aren\u2019t happy, return and don\u2019t consign anymore. Answer from chenchen_chikis on reddit.com",
+        "sentiment": 0.5719,
+        "sentiment_label": "positive"
+      }
+    ],
+    "keywords": [
+      [
+        "items",
+        8
+      ],
+      [
+        "program",
+        4
+      ],
+      [
+        "answer",
+        3
+      ],
+      [
+        "reddit",
+        3
+      ],
+      [
+        "process",
+        3
+      ]
+    ],
+    "negative_keywords": []
+  }
+}
